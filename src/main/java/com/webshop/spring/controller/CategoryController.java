@@ -35,7 +35,6 @@ public class CategoryController {
 	
 	@RequestMapping(value="/categories/{id}")
 	public String getCategory(ModelMap map, @PathVariable Integer id) {
-		
 		List<Product> products=productManager.getProductByCategoryId(id);
 		map.addAttribute("products",products);
 		List<Category> categories=categoryManager.getAllCategories();

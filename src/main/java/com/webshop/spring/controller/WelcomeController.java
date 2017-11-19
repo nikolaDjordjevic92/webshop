@@ -20,4 +20,8 @@ public class WelcomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value= {"/contactus"}, method = RequestMethod.GET)
+	public String getContact(ModelMap map) {
+		return "contactus";
+	}
 }

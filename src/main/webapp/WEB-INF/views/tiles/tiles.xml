@@ -36,5 +36,11 @@
        <put-attribute name="title" value="Categories" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/categories.jsp" />  
    </definition>  
+   
+      <!-- Contact -->
+   <definition name="contactus" extends="base-definition">  
+       <put-attribute name="title" value="contactus" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/contact.jsp" />  
+   </definition>  
   
 </tiles-definitions>

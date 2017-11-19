@@ -37,8 +37,8 @@ public class CategoryController {
 	public String getCategory(ModelMap map, @PathVariable Integer id) {
 		List<Product> products=productManager.getProductByCategoryId(id);
 		map.addAttribute("products",products);
-		List<Category> categories=categoryManager.getAllCategories();
-		map.addAttribute("categories",categories);
+//		List<Category> categories=categoryManager.getAllCategories();
+//		map.addAttribute("categories",categories);
 		return "category";
 	}
 }

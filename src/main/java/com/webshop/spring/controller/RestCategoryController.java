@@ -13,7 +13,7 @@ public class RestCategoryController {
 	 @RequestMapping("/home")
 	 public Product stocic() {//REST Endpoint.
 		 
-		 Product msg = new Product(66,"stocic",new BigDecimal(55.33));
+		 Product msg = new Product(66,"stocic",new BigDecimal(55.33),5);
 	        return msg;
 	 }
 }

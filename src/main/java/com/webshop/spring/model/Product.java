@@ -36,6 +36,15 @@ public class Product {
 	@Column(name="picture_uri")
 	private String pictureUri;
 	
+	@Column(name="quantity")
+	private Integer quantity;
+	
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 	public String getPictureUri() {
 		return pictureUri;
 	}
@@ -71,10 +80,11 @@ public class Product {
 		super();
 	}
 	
-	public Product(int id, String name, BigDecimal price) {
+	public Product(int id, String name, BigDecimal price,Integer quantity) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.quantity = quantity;
 	}
 }

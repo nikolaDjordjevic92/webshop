@@ -25,8 +25,6 @@ public class CategoryManagerImpl implements CategoryManager{
 
 	@Override
 	public List<Category> getAllCategories() {
-		// TODO Auto-generated method stub
 		return categoryDao.getAllCategories();
 	}
-
 }

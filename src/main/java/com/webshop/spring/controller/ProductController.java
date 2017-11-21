@@ -17,7 +17,7 @@ public class ProductController {
 	@Autowired
 	ProductManager productManager;
 	
-    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/{id}")
     public String getProducts(ModelMap model,@PathVariable Integer id) {
     	Product product = productManager.findById(id);
         model.addAttribute("product", product);

@@ -34,5 +34,10 @@ public class ProductManagerImpl implements ProductManager{
 		
 		return productDao.getProductsByCategoryId(id);
 	}
+
+	@Override
+	public void update(Product product) {
+		productDao.updateProduct(product);
+	}
 	
 }

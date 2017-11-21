@@ -7,8 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.webshop.spring.interceptors.ObjInterceptor;
+
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -31,6 +35,16 @@ public class WebstoreConfiguration 	extends WebMvcConfigurerAdapter{
 //	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 //	}
+    
+    @Bean
+    public ObjInterceptor pagePopulationInterceptor() {
+        return new ObjInterceptor();
+    }
+
+    public @Override void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(pagePopulationInterceptor());
+    }
+    
     
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

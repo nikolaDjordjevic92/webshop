@@ -5,27 +5,30 @@
 var helloAjaxApp = angular.module("myApp", []);
 
 helloAjaxApp.controller("myCtrl", ['$scope', '$http', function($scope, $http) {
-$scope.addRowAsyncAsJSON = function(){		
-	$prodId = $('#productId').val();
-	$quantityBought = $('#quantity').val();
-	
-	var dataObj = {
-	    id : $prodId,
-	    quantity : $quantityBought
-	}
-	
-	var res = $http.post("<c:url value='/order'/>", dataObj);
-	res.success(function(data, status, headers, config) {
-		$scope.message = data;
-	});
-	res.error(function(data, status, headers, config) {
-		alert( "failure message: " + JSON.stringify({data: data}));
-	});		
-	// Making the fields empty
-	//
-	$scope.productId='';
-	$scope.quantity='';
-};
+	$scope.addRowAsyncAsJSON = function(){		
+		$prodId = $('#productId').val();
+		$quantityBought = $('#quantity').val();
+		
+	    jQuery.ajax ({
+		    url: "<c:url value='/order'/>",
+		    headers: {
+		    	'Content-Type' : 'application/json'
+		    },
+		    type: "POST",
+		    data: JSON.stringify({
+		    	id : $prodId,
+		    	quantity : $quantityBought
+		    }),
+		    contentType: "application/json; charset=utf-8",
+		    success: function(response){
+		    	console.log('bravo');
+		    },
+		    error:function(request, status, error) {
+		    	console.log(status);
+		    }
+		});
+		 
+	};
 }]);
 </script>
 

@@ -23,7 +23,34 @@
 				padding-left: 0px;
 				padding-right: 0px;
 			}
-		
+			
+			#site-content {
+				margin:40px;
+				min-height: 600px;
+			}
+			
+			.navbar-right A{
+				font-size: 17px;
+				font-weight: bold;
+				
+			}
+			
+			#footer {
+				
+				text-align: center;
+				margin-top: 50px;
+				color: white;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			
+			#footer DIV.col-lg-12{
+				padding-top: 50px;
+				margin-top: 50px;
+				min-height: 200px;
+				background-color: black;
+			}
+			
 			#products {
 				padding:20px;
 				text-align: center;

@@ -19,6 +19,12 @@
 				</c:forEach>
 	        </ul>
 	      </li>
+	      <li>
+	      	<a href="<c:url value='/contactus' />">Contact Us</a>
+	      </li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>    Shopping cart</a></li>
 	    </ul>
 	  </div>
 	</nav>

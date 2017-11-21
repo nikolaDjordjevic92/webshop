@@ -32,4 +32,9 @@ public class ProductDaoImpl extends AbstractDao<Integer, Product> implements Pro
 		criteria.add(Restrictions.eq("category.id", id));
 		return (List<Product>)criteria.list();
 	}
+
+	@Override
+	public void updateProduct(Product product) {
+		super.update(product);		
+	}
 }

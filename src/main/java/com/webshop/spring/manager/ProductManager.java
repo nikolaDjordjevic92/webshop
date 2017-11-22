@@ -8,5 +8,5 @@ public interface ProductManager {
 	Product findById(int id);
 	List<Product> getAllProducts();
 	void update(Product product);
-	List<Product>getProductByCategoryId(int id);
+	List<Product>getProductByCategoryId(int id,String criteria);
 }

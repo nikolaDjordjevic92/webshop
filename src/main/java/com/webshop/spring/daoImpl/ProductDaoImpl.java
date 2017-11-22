@@ -27,10 +27,8 @@ public class ProductDaoImpl extends AbstractDao<Integer, Product> implements Pro
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Product> getProductsByCategoryId(int id) {
-		Criteria criteria = createEntityCriteria();
-		criteria.add(Restrictions.eq("category.id", id));
-		return (List<Product>)criteria.list();
+	public List<Product> getProductsById(int id,String crit) {
+		return getListById(id, crit);
 	}
 
 	@Override

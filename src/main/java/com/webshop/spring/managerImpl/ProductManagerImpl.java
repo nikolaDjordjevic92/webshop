@@ -29,10 +29,10 @@ public class ProductManagerImpl implements ProductManager{
 	}
 
 	@Override
-	public List<Product> getProductByCategoryId(int id) {
+	public List<Product> getProductByCategoryId(int id,String criteria) {
 		
 		
-		return productDao.getProductsByCategoryId(id);
+		return productDao.getProductsById(id,criteria);
 	}
 
 	@Override

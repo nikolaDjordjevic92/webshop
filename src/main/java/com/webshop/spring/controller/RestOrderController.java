@@ -1,6 +1,8 @@
 package com.webshop.spring.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +29,7 @@ public class RestOrderController {
 	 
 	 
 	 @RequestMapping(value= {"/order"}, method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	 public ResponseEntity<Order> saveOrder(@RequestBody Product product) {//REST Endpoint.
+	 public ResponseEntity<Order> saveOrder(@RequestBody Product product) {
 		 Order order = new Order();
 		 
 		 Product productFromBase = productManager.findById(product.getId());
@@ -54,5 +56,22 @@ public class RestOrderController {
 		 }
 		 else
 			 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+	 }
+	 
+	 @RequestMapping(value="/order/{id}",method= RequestMethod.GET)
+	 public ResponseEntity<List<Order>> getOrdersForUser(){
+		 List<Order> listOfOrders = new ArrayList<>();
+		 List<Order> listOfOrdersFromBase = orderManager.getOrdersByUser(1, "user.id");
+		 cc:for (int i = 0; i < listOfOrdersFromBase.size(); i++) {
+			 for(int j = 0; j < listOfOrders.size(); j++) {
+				 if(!listOfOrders.isEmpty() && listOfOrders.get(j).getProduct().getId()==listOfOrdersFromBase.get(i).getProduct().getId()) {
+					 listOfOrders.get(j).setOrderQuantity(listOfOrders.get(j).getOrderQuantity()+listOfOrdersFromBase.get(i).getOrderQuantity());
+					 listOfOrders.get(j).getProduct().setPrice(listOfOrders.get(j).getProduct().getPrice().add(listOfOrdersFromBase.get(i).getProduct().getPrice()));
+					continue cc;
+				 }
+			 }
+			 listOfOrders.add(listOfOrdersFromBase.get(i));
+		 }
+		 return new ResponseEntity<>(listOfOrders, HttpStatus.OK);
 	 }
 }

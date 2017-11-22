@@ -17,11 +17,19 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
-		
+			
+			P {
+				margin:0px;
+			}
+			
 			#menu {
-				padding-top:40px;
-				padding-left: 0px;
-				padding-right: 0px;
+				margin-top: 80px;
+			}
+		
+			#menu UL LI{
+				padding:10px 30px;
+				background-color: #f4f4f2;
+				
 			}
 			
 			#site-content {
@@ -32,7 +40,26 @@
 			.navbar-right A{
 				font-size: 17px;
 				font-weight: bold;
-				
+			}
+			
+			.login-dropdown {
+				padding: 15px;
+				min-width: 250px;
+			}
+			
+			.login-dropdown LI{
+				margin: 10px;
+				padding-bottom: 11px;
+			}
+			
+			.login-dropdown LI BUTTON {
+				font-weight: bold;
+			}
+			
+			NAV LI.dropdown A.drop-down:hover,
+			A.home:hover{
+				border-bottom: 3px solid white;
+				padding-bottom: 11px;
 			}
 			
 			#footer {
@@ -100,10 +127,40 @@
 			DIV.price {
 				padding: 5px;
 			}
+			
+			.shopping-list {
+				min-width: 400px;
+				padding: 5px;
+			}
+			
+			.shopping-list DIV {
+				min-height: 50px;
+				vertical-align: middle;
+			}
+			
+			.shopping-list DIV P{
+				margin:13px;
+			}
+			.shopping-item {
+				margin: 5px;
+				padding: 10px;
+			}
+			
+			.shopping-item IMG{
+				max-height: 50px;
+			}
+			
+			.vertical-center {
+			  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+			  min-height: 100vh; /* These two lines are counted as one :-)       */
+			
+			  display: flex;
+			  align-items: center;
+			}
 		</style>
 	</head>
   
-	<body>
+	<body ng-app="myApp" ng-controller="myCtrl">
         <header id="header">
             <tiles:insertAttribute name="header" />
         </header>

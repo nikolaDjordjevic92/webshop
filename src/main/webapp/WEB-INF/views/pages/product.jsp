@@ -1,42 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 
-<script>
-var helloAjaxApp = angular.module("myApp", []);
 
-helloAjaxApp.controller("myCtrl", ['$scope', '$http', function($scope, $http) {
-	$scope.addRowAsyncAsJSON = function(){		
-		$prodId = $('#productId').val();
-		$quantityBought = $('#quantity').val();
-		
-	    jQuery.ajax ({
-		    url: "<c:url value='/order'/>",
-		    headers: {
-		    	'Content-Type' : 'application/json'
-		    },
-		    type: "POST",
-		    data: JSON.stringify({
-		    	id : $prodId,
-		    	quantity : $quantityBought
-		    }),
-		    contentType: "application/json; charset=utf-8",
-		    success: function(response){
-		    	console.log('bravo');
-		    },
-		    error:function(request, status, error) {
-		    	console.log(status);
-		    }
-		});
-		 
-	};
-}]);
-</script>
-
-<div id="product" class="col-lg-12" ng-app="myApp">
+<div id="product" class="col-lg-12">
 	<div class="row">
 		<div class="col-lg-2">
 		</div>
-		<div class="col-lg-8" ng-controller="myCtrl">
+		<div class="col-lg-8">
 			<div class="col-lg-12">
 				<div class="row">
 					<div class="col-lg-6">

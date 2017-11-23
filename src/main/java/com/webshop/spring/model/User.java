@@ -2,6 +2,8 @@ package com.webshop.spring.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,30 @@ public class User {
 	
 	@Column(name="password")
 	private String password;
+	
+//	@Column(name="state")
+//	@Enumerated(EnumType.ORDINAL)
+//	private UserState state;
+//	
+//	@Column(name="role")
+//	@Enumerated(EnumType.ORDINAL)
+//	private Role role;
+
+//	public UserState getState() {
+//		return state;
+//	}
+//
+//	public void setState(UserState state) {
+//		this.state = state;
+//	}
+//
+//	public Role getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(Role role) {
+//		this.role = role;
+//	}
 
 	public int getId() {
 		return id;

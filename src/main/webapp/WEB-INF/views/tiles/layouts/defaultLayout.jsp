@@ -37,6 +37,42 @@
 				min-height: 600px;
 			}
 			
+			.price-product {
+				font-size: 30px;
+				font-weight: bold;
+			}
+			
+			.stock-div {
+				margin-top: 70px;
+				padding: 35px;
+				font-size: 30px;
+				max-width: 280px;
+				text-align: center;
+				background-color: #00cc00;
+				color: white;
+				font-weight: bold;
+			}
+			
+			.order-product {
+				margin-top: 100px;
+				font-size: 20px;
+			}
+			
+			.product-image {
+				text-align: center;
+				padding: 15px;
+			}
+			
+			.product-image IMG {
+				border: 1px solid #ddd;
+				border-radius: 4px;  
+    			padding: 30px;
+			}
+			
+			.product-image IMG:hover {
+			    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+			}			
+			
 			.navbar-right A{
 				font-size: 17px;
 				font-weight: bold;
@@ -111,12 +147,12 @@
 			}
 			
 			.product-card-price DIV{
-				background-color: silver;
+				background-color: #1b1b1c;
 				padding-left:0px;
 				padding-right:0px;
 			}
 			.product-card-price B{
-				color:green;
+				color:white;
 				font-size: 30px;
 			}
 			.product-card-price BUTTON{
@@ -157,6 +193,25 @@
 			  display: flex;
 			  align-items: center;
 			}
+			
+			.image {
+			  opacity: 1;
+			  transition: .5s ease;
+			  backface-visibility: hidden;
+			}
+		    .product-card-price {
+			  transition: .5s ease;
+			  opacity: 0;
+			}
+			
+			.product-card:hover .image {
+			  opacity: 0.3;
+			}
+			
+			.product-card:hover .product-card-price {
+			  opacity: 1;
+			}
+			
 		</style>
 	</head>
   

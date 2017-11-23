@@ -25,7 +25,7 @@ public class WebstoreConfiguration 	extends WebMvcConfigurerAdapter{
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/views/");
+        viewResolver.setPrefix("/WEB-INF/views/pages/");
         viewResolver.setSuffix(".jsp");
  
         return viewResolver;

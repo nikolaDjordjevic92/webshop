@@ -3,7 +3,6 @@ package com.webshop.spring.daoImpl;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.webshop.spring.dao.AbstractDao;
@@ -25,7 +24,6 @@ public class ProductDaoImpl extends AbstractDao<Integer, Product> implements Pro
 		return (List<Product>)criteria.list();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Product> getProductsById(int id,String crit) {
 		return getListById(id, crit);

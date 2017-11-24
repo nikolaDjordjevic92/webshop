@@ -61,6 +61,11 @@
 	      </li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
+	      <li>
+	      	<a class="drop-down" href="<c:url value='/myorders'/>">
+	      		<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>     My orders
+	      	</a>
+	      </li>
 	      <li class="dropdown">
 	      	<a class="dropdown-toggle drop-down" href="#here" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>    Log in</a>
 	      	<ul class="dropdown-menu login-dropdown">
@@ -77,8 +82,6 @@
 	      		</li>
 	      	</ul>
 	      </li>
-	    </ul>
-      	<ul class="nav navbar-nav navbar-right">
 	      <li class="dropdown">
 	      	<a class="dropdown-toggle drop-down" ng-click="getOrders()" href="#here" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>    Shopping cart</a>
 	      	<ul class="dropdown-menu shopping-list">

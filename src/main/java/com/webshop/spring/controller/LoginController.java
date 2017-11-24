@@ -1,6 +1,10 @@
 package com.webshop.spring.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationTrustResolver;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,9 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 	
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String getLoginPage() {
-		return "login";
+	@Autowired
+	AuthenticationTrustResolver authenticationTrustResolver;
+
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginPage() {
+		if (isCurrentAuthenticationAnonymous()) {
+			return "login";
+		} else {
+			return "redirect:/";
+		}
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
@@ -21,6 +33,12 @@ public class LoginController {
 		else
 			return "login";
 		
+	}
+	
+	private boolean isCurrentAuthenticationAnonymous() {
+		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		return authenticationTrustResolver.isAnonymous(authentication);
 	}
 	
 }

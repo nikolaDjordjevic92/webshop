@@ -1,7 +1,6 @@
 package com.webshop.spring.daoImpl;
 
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 

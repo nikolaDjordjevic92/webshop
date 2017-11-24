@@ -18,6 +18,19 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
 			
+			.bg {
+			  position: absolute;
+			  z-index: -1;
+			  top: 0;
+			  bottom: 0;
+			  left: 0;
+			  right: 0;
+			  background: url("<c:url value='/City-Skyline-Silhouette.jpg'/>") center center;
+			  opacity: .4;
+			    width: 100%;
+			    height: 100%;
+			}
+			
 			P {
 				margin:0px;
 			}
@@ -92,26 +105,35 @@
 				font-weight: bold;
 			}
 			
-			NAV LI.dropdown A.drop-down:hover,
+			NAV LI A.drop-down:hover,
 			A.home:hover{
 				border-bottom: 3px solid white;
 				padding-bottom: 11px;
 			}
 			
+			.pagination-div {
+				text-align: center;
+			}
+			
+			TABLE,
+			TABLE TH {
+				text-align: center;
+			}
+			
 			#footer {
-				
 				text-align: center;
 				margin-top: 50px;
 				color: white;
 				font-weight: bold;
 				font-size: 20px;
+				width: 100%;
 			}
 			
 			#footer DIV.col-lg-12{
 				padding-top: 50px;
 				margin-top: 50px;
 				min-height: 200px;
-				background-color: black;
+				width: 100%;
 			}
 			
 			#products {
@@ -216,6 +238,7 @@
 	</head>
   
 	<body ng-app="myApp" ng-controller="myCtrl">
+		
         <header id="header">
             <tiles:insertAttribute name="header" />
         </header>

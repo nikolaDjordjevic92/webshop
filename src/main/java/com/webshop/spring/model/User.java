@@ -1,18 +1,30 @@
 package com.webshop.spring.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -23,29 +35,18 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-//	@Column(name="state")
-//	@Enumerated(EnumType.ORDINAL)
-//	private UserState state;
-//	
-//	@Column(name="role")
-//	@Enumerated(EnumType.ORDINAL)
-//	private Role role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_user_profile", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "user_profile_id")})
+    private Set<UserProfile> userProfiles = new HashSet<>();
+   
+	public Set<UserProfile> getUserProfiles() {
+		return userProfiles;
+	}
 
-//	public UserState getState() {
-//		return state;
-//	}
-//
-//	public void setState(UserState state) {
-//		this.state = state;
-//	}
-//
-//	public Role getRole() {
-//		return role;
-//	}
-//
-//	public void setRole(Role role) {
-//		this.role = role;
-//	}
+	public void setUserProfiles(Set<UserProfile> userProfiles) {
+		this.userProfiles = userProfiles;
+	}
 
 	public int getId() {
 		return id;
@@ -70,6 +71,45 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((userProfiles == null) ? 0 : userProfiles.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id != other.id)
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (userProfiles == null) {
+			if (other.userProfiles != null)
+				return false;
+		} else if (!userProfiles.equals(other.userProfiles))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
 	
 }

@@ -4,7 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<div class="col-lg-12">
+<div class="col-lg-12 footer">
+	<div class="bg"></div>
 	<div class="col-lg-4">
 		<img src="<c:url value='/facebooki.png'/>" onmouseover="this.src='<c:url value='/facebook.png'/>';" onmouseout="this.src='<c:url value='/facebooki.png'/>';"/>
 	</div>	

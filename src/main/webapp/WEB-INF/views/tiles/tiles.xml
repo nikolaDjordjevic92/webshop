@@ -42,5 +42,11 @@
        <put-attribute name="title" value="contactus" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/contact.jsp" />  
    </definition>  
+   
+       <!-- My orders -->
+   <definition name="myorders" extends="base-definition">  
+       <put-attribute name="title" value="My orders" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/myorders.jsp" />  
+   </definition> 
   
 </tiles-definitions>

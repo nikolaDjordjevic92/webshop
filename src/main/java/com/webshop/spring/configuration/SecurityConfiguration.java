@@ -34,8 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/user/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 		.antMatchers("/backend/**", "/private/**").access("hasRole('ADMIN')").and().formLogin()
 		.loginPage("/login").loginProcessingUrl("/login").usernameParameter("username")
-		.passwordParameter("password").and().csrf().and().exceptionHandling()
-		.accessDeniedPage("/access-denied");
+		.passwordParameter("password").and().csrf().disable();
     }
 	
 	@Bean

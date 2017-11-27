@@ -14,6 +14,34 @@
 			  });
 			}
 			
+			$scope.persistReview = function(){		
+				$prodId = $('#productId').val();
+				$rating = $('#star-rate').val();
+				$content = $('#comment').val();
+				
+			    jQuery.ajax ({
+				    url: "<c:url value='/reviews'/>",
+				    headers: {
+				    	'Content-Type' : 'application/json'
+				    },
+				    type: "POST",
+				    data: JSON.stringify({
+				    	product : {
+				    		id : $prodId
+				    	},
+				    	rating : $rating,
+				    	content : $content
+				    }),
+				    contentType: "application/json; charset=utf-8",
+				    success: function(response){
+				    	console.log('bravo');
+				    },
+				    error:function(request, status, error) {
+				    	console.log(status);
+				    }
+				});
+			};
+			
 			$scope.addRowAsyncAsJSON = function(){		
 				$prodId = $('#productId').val();
 				$quantityBought = $('#quantity').val();

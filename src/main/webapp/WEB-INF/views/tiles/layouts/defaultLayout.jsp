@@ -16,6 +16,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
 		<style>
 			
 			.bg {
@@ -55,15 +57,67 @@
 				font-weight: bold;
 			}
 			
+			.product-information {
+				text-align: right !important;
+			}
+			
 			.stock-div {
 				margin-top: 70px;
 				padding: 35px;
 				font-size: 30px;
 				max-width: 280px;
-				text-align: center;
 				background-color: #00cc00;
 				color: white;
 				font-weight: bold;
+			}
+			
+			.single-review {
+				text-align: left;
+				padding: 20px;
+				font-size: 20px;
+				min-height: 85px;
+			}
+			
+			.single-review [checked=checked]{
+				color: orange;
+			}
+			
+			#review-content {
+				margin-left: 15px;
+			}
+			
+			#username {
+				font-weight: bold;
+			}
+			
+			DIV.reviews {
+				font-size: 30px;
+			}
+			
+			DIV.reviews A:hover {
+				color: orange;
+			}
+			
+			DIV.reviews A {
+				color: white;
+			}
+			
+			DIV.reviews A[checked="checked"] {
+				color: orange;
+			}
+			
+			
+			
+			.reviews-content .form-group {
+				text-align: left;
+			}
+			
+			.reviews-content .form-group LABEL {
+				font-size: 20px;
+			}
+			
+			LABEL[for=comment] {
+				
 			}
 			
 			.order-product {
@@ -109,6 +163,40 @@
 			A.home:hover{
 				border-bottom: 3px solid white;
 				padding-bottom: 11px;
+			}
+			
+			.tablink {
+				background-color: black;
+	    		color: white;
+				float: left;
+			    border: none;
+			    outline: none;
+			    cursor: pointer;
+			    padding: 14px 16px;
+			    font-size: 17px;
+			    width: 25%;
+			}		
+			
+			.tablink:hover {
+				background-color: #595959;
+			}
+			
+			.tabcontent {
+				color: white;
+			    display: none;
+			    padding: 25px;
+			    text-align: center;
+			    min-height: 400px;
+			}
+			
+			#write-review H3 {
+				margin-bottom: 30px;
+			}
+			
+			#product-description,
+			#reviews,
+			#write-review {
+				background-color:black;
 			}
 			
 			.pagination-div {

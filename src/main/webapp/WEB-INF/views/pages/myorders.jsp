@@ -20,7 +20,18 @@
 	      			<td>${item.product.price} $</td>
 	      			<td>${item.orderQuantity}</td>
 	      			<td><fmt:formatDate pattern="dd.MM.yyyy, hh:mm" value = "${item.orderDate}" /></td>
-	      			<td>/</td>
+	      			<c:if test = "${item.orderStatus == 'IN_CART'}">
+		      			<td class="danger shipping-status">In cart</td>
+	      			</c:if>
+	      			<c:if test = "${item.orderStatus == 'ORDERED'}">
+		      			<td class="warning shipping-status">Ordered</td>
+	      			</c:if>
+	      			<c:if test = "${item.orderStatus == 'ON_THE_ROAD'}">
+		      			<td class="info shipping-status">On the road</td>
+	      			</c:if>
+	      			<c:if test = "${item.orderStatus == 'SHIPPED'}">
+		      			<td class="success shipping-status">Shipped</td>
+	      			</c:if>
 	      		</tr>
       		</c:forEach>
         </tbody>

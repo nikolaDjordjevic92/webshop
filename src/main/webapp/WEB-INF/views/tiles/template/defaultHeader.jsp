@@ -7,6 +7,8 @@
 	<script>
 		var app = angular.module('myApp', []);
 		app.controller('myCtrl', function($scope, $http) {
+			$scope.on_stock_value=${product.quantity}+0;
+			$scope.on_stock=${product.quantity}+0;
 			$scope.getOrders = function(){	
 			  $http.get("<c:url value='/order/1'/>")
 			  .then(function(response) {
@@ -34,7 +36,7 @@
 				    }),
 				    contentType: "application/json; charset=utf-8",
 				    success: function(response){
-				    	console.log('bravo');
+				    	$('#ajax-response').html('<div class="alert alert-success alert-dismissable fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Successfully added review.</div>');
 				    },
 				    error:function(request, status, error) {
 				    	console.log(status);
@@ -58,10 +60,10 @@
 				    }),
 				    contentType: "application/json; charset=utf-8",
 				    success: function(response){
-				    	console.log('bravo');
+				    	$('#ajax-response').html('<div class="alert alert-success alert-dismissable fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Successfully added product in cart.</div>');
 				    },
 				    error:function(request, status, error) {
-				    	console.log(status);
+				    	$('#ajax-response').html('<div class="alert alert-danger alert-dismissable fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Something went wrong, try again...</div>');
 				    }
 				});
 			};
@@ -74,7 +76,7 @@
 	      <a class="navbar-brand" href="#">Webstore</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a class="home" href="<c:url value='/'/>">Home</a></li>
+	      <li class="active"><a class="home" href="<c:url value='/'/>"><i class="fa fa-home" aria-hidden="true"></i>  Home</a></li>
 	      <li class="dropdown">
 	        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
 	        <span class="caret"></span></a>
@@ -85,7 +87,9 @@
 	        </ul>
 	      </li>
 	      <li>
-	      	<a href="<c:url value='/contactus' />">Contact Us</a>
+	      	<a href="<c:url value='/contactus' />"><i class="fa fa-phone" aria-hidden="true"></i>  Contact Us
+	      	
+	      	</a>
 	      </li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
@@ -122,6 +126,11 @@
 			      			<img class="shopping-item-img" ng-src="/Webstore{{order.product.pictureUri}}">
 		      			</div>
 	      			</div>
+	      		</li>
+	      		<li class="btn-shopping-cart">
+	      			<form action="<c:url value='/ordersubmit'/>" method="GET">
+		      			<input type="submit" value="Buy" class="btn btn-info">
+		      		</form>
 	      		</li>
 	      	</ul>
 	      </li>

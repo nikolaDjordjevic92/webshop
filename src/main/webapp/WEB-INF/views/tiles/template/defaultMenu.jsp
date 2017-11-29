@@ -2,13 +2,20 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div id="menu" class="col-lg-12">
+<!--  <div id="menu" class="col-lg-12">
 	<ul class="list-group">
 		<li class="list-group-item">
 			<h2>Categories</h2>
 		</li>
-		<c:forEach items="${categories}" var="item">
-          <li class="list-group-item"><a href="<c:url value='/categories/${item.id}'/>">${item.name}</a></li>
-		</c:forEach>
+		
 	</ul>
+</div> -->
+<div class="tab">
+  <p class="h1">Categories:</p>
+  <c:forEach items="${categories}" var="item">
+      <button class="tablinks" onclick="window.location='<c:url value='/categories/${item.id}'/>'">
+	      <i class="material-icons">${item.glyphicon}</i><p> ${item.name}</p>
+	     
+      </button>
+  </c:forEach>
 </div>

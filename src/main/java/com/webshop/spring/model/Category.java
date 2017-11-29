@@ -18,6 +18,15 @@ public class Category {
 	@Column(name="name",nullable=false)
 	private String name;
 	
+	@Column(name="glyphicon")
+	private String glyphicon;
+	
+	public String getGlyphicon() {
+		return glyphicon;
+	}
+	public void setGlyphicon(String glyphicon) {
+		this.glyphicon = glyphicon;
+	}
 	public int getId() {
 		return id;
 	}

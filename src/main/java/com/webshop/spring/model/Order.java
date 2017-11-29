@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,6 +33,10 @@ public class Order {
 	
 	@Column(name="order_quantity")
 	private Integer orderQuantity;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="order_status")
+	private OrderStatus orderStatus;
 	
 	public int getId() {
 		return id;
@@ -61,6 +67,12 @@ public class Order {
 	}
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
+	}
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 	
 }

@@ -5,7 +5,10 @@
 
 <div id="product" class="col-lg-12">
 	<div class="row">
-		<div class="col-lg-10">
+		<div class="col-lg-1">
+		
+		</div>
+		<div class="col-lg-10 review-container">
 			<div class="col-lg-12">
 				<h1>${product.name}</h1>
 			</div>
@@ -21,7 +24,7 @@
 				<div class="col-lg-6">
 				</div>
 				<div class="col-lg-6 stock-div">
-					<p>On stock:  ${product.quantity}</p>
+					<p>On stock: {{on_stock_value<0 ?  on_stock_value=on_stock : on_stock=on_stock_value}}</p>
 				</div>
 				<div class="col-lg-12 order-product">
 					<form role="form" ng-submit="addRowAsyncAsJSON()">
@@ -34,12 +37,13 @@
 											<p>Quantity:</p>
 										</div>
 										<div class="col-lg-6">
-											<input type="text" class="form-control" id="quantity">
+											
+											<input type="text" ng-model="quantity_cart" class="form-control" id="quantity">
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-6">
-									<input type="submit" value="Add to cart" class="btn btn-primary"/>
+									<input type="submit" ng-click="on_stock_value = on_stock - quantity_cart" value="Add to cart" class="btn btn-primary"/>
 								</div>
 							</div>
 						</div>
@@ -48,16 +52,19 @@
 				
 			</div>				
 		</div>
-		<div class="col-lg-2">
+		<div id="ajax-response" class="col-lg-1">
+		
 		</div>
 	</div>
-	<div class="col-lg-10">
+	<div class="col-lg-1">
+	</div>
+	<div class="col-lg-10 review-container">
 		<div id="product-description" class="tabcontent">
 		  <h3>Description</h3>
 		  <p id="description">${product.description}</p>
 		</div>
 		
-		<div id="reviews" class="tabcontent">
+		<div id="reviews" class="col-lg-12 tabcontent">
 		  <h3>Reviews</h3>
 		  <c:forEach items="${reviews}" var="item">
 		  	<div class="col-lg-12 single-review">
@@ -109,10 +116,17 @@
 		<button class="tablink" onclick="openCity('reviews', this, 'grey')">Reviews</button>
 		<button class="tablink" onclick="openCity('write-review', this, 'grey')">Write review</button>
 	</div>
-	<div class="col-lg-2">
+	<div class="col-lg-1">
 	</div>
 </div>
 <script>
+	$(document).ready(function() {
+	    // show the alert
+	    setTimeout(function() {
+	        $(".alert").alert('close');
+	    }, 2000);
+	});
+	
 	function openCity(cityName, elmnt, color) {
 	    var i, tabcontent, tablinks;
 	    tabcontent = document.getElementsByClassName("tabcontent");
@@ -171,4 +185,6 @@
 		    $(string).attr('checked','checked');
 		}
 	}
+	
+	
 </script>

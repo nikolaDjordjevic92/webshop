@@ -63,14 +63,16 @@ public class RestOrderController {
 		 List<Order> listOfOrders = new ArrayList<>();
 		 List<Order> listOfOrdersFromBase = orderManager.getOrdersByUser(1, "user.id");
 		 cc:for (int i = 0; i < listOfOrdersFromBase.size(); i++) {
-			 for(int j = 0; j < listOfOrders.size(); j++) {
-				 if(!listOfOrders.isEmpty() && listOfOrders.get(j).getProduct().getId()==listOfOrdersFromBase.get(i).getProduct().getId()) {
-					 listOfOrders.get(j).setOrderQuantity(listOfOrders.get(j).getOrderQuantity()+listOfOrdersFromBase.get(i).getOrderQuantity());
-					 listOfOrders.get(j).getProduct().setPrice(listOfOrders.get(j).getProduct().getPrice().add(listOfOrdersFromBase.get(i).getProduct().getPrice()));
-					continue cc;
+			 if(listOfOrdersFromBase.get(i).getOrderStatus().toString().equals("IN_CART")) {
+				 for(int j = 0; j < listOfOrders.size(); j++) {
+					 if(!listOfOrders.isEmpty() && listOfOrders.get(j).getProduct().getId()==listOfOrdersFromBase.get(i).getProduct().getId()) {
+						 listOfOrders.get(j).setOrderQuantity(listOfOrders.get(j).getOrderQuantity()+listOfOrdersFromBase.get(i).getOrderQuantity());
+						 listOfOrders.get(j).getProduct().setPrice(listOfOrders.get(j).getProduct().getPrice().add(listOfOrdersFromBase.get(i).getProduct().getPrice()));
+						 continue cc;
+					 }
 				 }
+				 listOfOrders.add(listOfOrdersFromBase.get(i));
 			 }
-			 listOfOrders.add(listOfOrdersFromBase.get(i));
 		 }
 		 return new ResponseEntity<>(listOfOrders, HttpStatus.OK);
 	 }

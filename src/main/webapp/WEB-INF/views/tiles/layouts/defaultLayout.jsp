@@ -17,8 +17,65 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		
+		<!--  icons -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- font awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 		<style>
+			div.tab {
+			    float: left;
+			    background-color: #333;
+			    height: 300px;
+			    width: 100%;
+			}
+			
+			div.tab A,
+			div.tab A:focus,
+			div.tab A:visited, 
+			div.tab A:hover {
+				color:white;
+			}
+			
+			.tablinks {
+				padding: 10px 0px;
+			}
+			
+			div.tab A:hover {
+				text-decoration: none;
+				color:black;
+			}
+			
+			div.tab p.h1 {
+				font-size: 18px;
+				font-weight: bold;
+			}
+			
+			/* Style the buttons inside the tab */
+			div.tab button,
+			div.tab P.h1 {
+			    display: block;
+			    background-color: inherit;
+			    color: white;
+			    padding: 15px 12px;
+			    width: 100%;
+			    border: none;
+			    outline: none;
+			    text-align: left;
+			    cursor: pointer;
+			    transition: 0.3s;
+			}
+			
+			/* Change background color of buttons on hover */
+			div.tab button:hover {
+			    background-color: #ddd;
+			    color: black;
+			}
+			
+			/* Create an active/current "tab button" class */
+			div.tab button.active {
+			    background-color: #ccc;
+			}
 			
 			.bg {
 			  position: absolute;
@@ -28,13 +85,30 @@
 			  left: 0;
 			  right: 0;
 			  background: url("<c:url value='/City-Skyline-Silhouette.jpg'/>") center center;
-			  opacity: .4;
+			  opacity: .1;
 			    width: 100%;
 			    height: 100%;
 			}
 			
 			P {
 				margin:0px;
+			}
+			
+			.review-container {
+				margin-bottom: 50px;
+				padding: 0px;
+			}
+			
+			#reviews {
+				overflow-y:scroll; 
+				max-height: 320px;
+			}
+			
+			.sidemenu-main-div {
+				padding-left: 0px;
+				height: 120%;
+				background-color: #333;
+				padding-right: 0px;
 			}
 			
 			#menu {
@@ -106,7 +180,8 @@
 				color: orange;
 			}
 			
-			
+			.shipping-status {
+			}
 			
 			.reviews-content .form-group {
 				text-align: left;
@@ -130,15 +205,40 @@
 				padding: 15px;
 			}
 			
+			.btn-shopping-cart {
+				text-align: right;
+				padding: 17px;
+				border-top: 1px solid #d2972a;
+			}
+			
+			.btn-shopping-cart FORM {
+				margin: 0px;	
+			}
+			
+			.btn-shopping-cart .btn {
+				width: 25%;
+			}
+			
+			.submit-order-fields {
+				padding: 20px;
+			}
+			
 			.product-image IMG {
 				border: 1px solid #ddd;
 				border-radius: 4px;  
     			padding: 30px;
+    			box-shadow: 0 0 7px 1px rgba(0, 140, 186, 0.5);
 			}
 			
 			.product-image IMG:hover {
-			    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+			    box-shadow: 0 0 37px 1px red;
+			   	transition: all .7s ease;
 			}			
+			
+			.navbar {
+				margin-bottom: 0px;
+				border-radius: 0px;
+			}
 			
 			.navbar-right A{
 				font-size: 17px;
@@ -186,7 +286,8 @@
 			    display: none;
 			    padding: 25px;
 			    text-align: center;
-			    min-height: 400px;
+			    min-height: 350px;
+			    max-height: 350px;
 			}
 			
 			#write-review H3 {
@@ -196,7 +297,7 @@
 			#product-description,
 			#reviews,
 			#write-review {
-				background-color:black;
+				background-color: #333;
 			}
 			
 			.pagination-div {
@@ -218,10 +319,9 @@
 			}
 			
 			#footer DIV.col-lg-12{
-				padding-top: 50px;
-				margin-top: 50px;
 				min-height: 200px;
 				width: 100%;
+				padding-top: 50px;
 			}
 			
 			#products {
@@ -331,13 +431,13 @@
             <tiles:insertAttribute name="header" />
         </header>
      	
-     	<div class="col-lg-2">
+     	<div class="col-lg-1 sidemenu-main-div">
 	        <section id="sidemenu">
 	            <tiles:insertAttribute name="menu" />
 	        </section>
         </div>     
         
-        <div class="col-lg-10">
+        <div class="col-lg-11">
 	        <section id="site-content">
 	            <tiles:insertAttribute name="body" />
 	        </section>

@@ -48,5 +48,11 @@
        <put-attribute name="title" value="My orders" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/myorders.jsp" />  
    </definition> 
+   
+        <!-- Submit orders -->
+   <definition name="order-submit" extends="base-definition">  
+       <put-attribute name="title" value="Submit orders" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/order-submit.jsp" />  
+   </definition> 
   
 </tiles-definitions>

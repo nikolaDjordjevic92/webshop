@@ -13,9 +13,8 @@
 <div class="tab">
   <p class="h1">Categories:</p>
   <c:forEach items="${categories}" var="item">
-      <button class="tablinks" onclick="window.location='<c:url value='/categories/${item.id}'/>'">
+      <button id="category-${item.id}" class="tablinks" onclick="window.location='<c:url value='/categories/${item.id}'/>'">
 	      <i class="material-icons">${item.glyphicon}</i><p> ${item.name}</p>
-	     
       </button>
   </c:forEach>
 </div>

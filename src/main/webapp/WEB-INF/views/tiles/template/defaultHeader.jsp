@@ -5,6 +5,34 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 	<script>
+		$(document).ready(function(){
+			function markCurrentCategory() {
+				var i,tablinks;
+				 tablinks = document.getElementsByClassName("tablinks");
+				    for (i = 0; i < tablinks.length; i++) {
+				        tablinks[i].className = tablinks[i].className.replace(" active", "");
+				    }
+			
+				var url=window.location.href;
+				var id=0;
+				if(url.includes("categories")){
+				     id=url.split("/").pop();
+				     if(id.includes("?")){
+						id = id.substring(id.indexOf("?"));				    	 
+				     }
+				     var htmlSelector = '#category-'+id;
+					 $(htmlSelector).addClass('active');		
+				}
+				if(url.includes("product")){
+					id=${product.category.id}+0; 
+					var htmlSelector = '#category-'+id;
+				    $(htmlSelector).addClass('active');	
+				}
+			}
+			
+			markCurrentCategory();
+		});
+	
 		var app = angular.module('myApp', []);
 		app.controller('myCtrl', function($scope, $http) {
 			$scope.on_stock_value=${product.quantity}+0;

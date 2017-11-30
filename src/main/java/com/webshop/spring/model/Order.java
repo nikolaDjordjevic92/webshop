@@ -36,7 +36,7 @@ public class Order {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="order_status")
-	private OrderStatus orderStatus;
+	private OrderStatus orderStatus=OrderStatus.IN_CART;
 	
 	public int getId() {
 		return id;

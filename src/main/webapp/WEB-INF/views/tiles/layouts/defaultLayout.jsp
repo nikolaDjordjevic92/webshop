@@ -51,6 +51,11 @@
 				font-weight: bold;
 			}
 			
+			H1 {
+				text-align: center;
+				margin-bottom: 30px;
+			}
+			
 			/* Style the buttons inside the tab */
 			div.tab button,
 			div.tab P.h1 {
@@ -75,6 +80,7 @@
 			/* Create an active/current "tab button" class */
 			div.tab button.active {
 			    background-color: #ccc;
+			    color: black;
 			}
 			
 			.bg {
@@ -106,9 +112,13 @@
 			
 			.sidemenu-main-div {
 				padding-left: 0px;
-				height: 120%;
 				background-color: #333;
 				padding-right: 0px;
+			}
+			
+			.sidemenu-main-div-row {
+				margin: 0px;
+				display:flex;
 			}
 			
 			#menu {
@@ -133,15 +143,24 @@
 			
 			.product-information {
 				text-align: right !important;
+				padding: 15px;
 			}
 			
 			.stock-div {
-				margin-top: 70px;
+				text-align: center;
 				padding: 35px;
 				font-size: 30px;
-				max-width: 280px;
 				background-color: #00cc00;
 				color: white;
+				font-weight: bold;
+			}
+			
+			.price-div {
+				text-align: center;
+				padding: 35px;
+				font-size: 30px;
+				background-color: #ccc;
+				color: #333;
 				font-weight: bold;
 			}
 			
@@ -196,8 +215,26 @@
 			}
 			
 			.order-product {
-				margin-top: 100px;
 				font-size: 20px;
+				padding: 0px;
+			}
+			
+			.add-to-cart-div {
+				text-align: center;
+				padding: 10px;
+			}
+			
+			.order-product-inner {
+				padding: 100px 50px;
+				min-height: 250px;
+				font-size:35px;
+				background-color: #333;
+				color: white;
+			}
+			
+			.input-text{
+				padding-top: 10px;
+				padding-bottom: 10px;
 			}
 			
 			.product-image {
@@ -311,7 +348,6 @@
 			
 			#footer {
 				text-align: center;
-				margin-top: 50px;
 				color: white;
 				font-weight: bold;
 				font-size: 20px;
@@ -424,24 +460,25 @@
 			
 		</style>
 	</head>
-  
+  	
 	<body ng-app="myApp" ng-controller="myCtrl">
 		
         <header id="header">
             <tiles:insertAttribute name="header" />
         </header>
-     	
-     	<div class="col-lg-1 sidemenu-main-div">
-	        <section id="sidemenu">
-	            <tiles:insertAttribute name="menu" />
-	        </section>
-        </div>     
+     	<div class="row sidemenu-main-div-row">
+     		<div class="col-lg-1 sidemenu-main-div">
+		        <section id="sidemenu">
+		            <tiles:insertAttribute name="menu" />
+		        </section>
+        	</div>     
         
-        <div class="col-lg-11">
-	        <section id="site-content">
-	            <tiles:insertAttribute name="body" />
-	        </section>
-        </div>
+	        <div class="col-lg-11">
+		        <section id="site-content">
+		            <tiles:insertAttribute name="body" />
+		        </section>
+	        </div>
+   		</div>
         <footer id="footer">
             <tiles:insertAttribute name="footer" />
         </footer>

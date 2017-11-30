@@ -3,6 +3,8 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="container">
+		
+	 <h1>My orders:</h1>
 	 <table class="table table-striped table-hover table-responsive">
 	    <thead>
 	      <tr>
@@ -39,11 +41,22 @@
      
      <div class="col-lg-12 pagination-div">
      	<ul class="pagination pagination-lg">
-		  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-		  <li class="page-item"><a class="page-link" href="#">1</a></li>
-		  <li class="page-item"><a class="page-link" href="#">2</a></li>
-		  <li class="page-item"><a class="page-link" href="#">3</a></li>
-		  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+     		<c:forEach begin="1" end="${maxPages}" step="1" var="url" varStatus="i">
+			  <li class="page-item">
+			  	<c:choose>
+			  		<c:when test="${i.index==page}">
+			  			<span>${i.index}</span>
+			  		</c:when>
+			  		<c:otherwise>
+			  			<c:url value="/myorders" var="url">
+			  				<c:param name="page" value="${i.index}"/>
+			  			</c:url>
+					  	<a class="page-link" href="<c:out value='${url}'/>"> ${i.index } </a> 
+			  		</c:otherwise>
+			  	</c:choose>
+			  
+			  </li>
+     		</c:forEach>
 		</ul>
      </div>
      

@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.webshop.spring.manager.OrderManager;
 import com.webshop.spring.model.Order;
@@ -20,18 +21,31 @@ public class OrderControll {
 	@Autowired
 	private OrderManager orderManager;
 	
-	@RequestMapping(value="/myorders")
-	public String getAllOrders(ModelMap map) {
+	@RequestMapping(value="/myorders",method = RequestMethod.GET)
+	public ModelAndView getAllOrders(@RequestParam(required=false) Integer page) {
 		List<Order> myOrders = orderManager.getOrdersByUser(1, "user.id");
+		ModelAndView mav = new ModelAndView("myorders");
+		PagedListHolder<Order> pageListHolder = new PagedListHolder<>(myOrders);
+		pageListHolder.setPageSize(12);
 		
-		map.addAttribute("myorders",myOrders);
+		if(page==null || page < 1 || page>pageListHolder.getPageCount()) {
+			pageListHolder.setPage(0);
+			page=1;
+		}
+		else 
+			pageListHolder.setPage(page-1);
 		
-		return "myorders";
+		mav.addObject("page",page);
+		mav.addObject("myorders", pageListHolder.getPageList());
+		
+		mav.addObject("maxPages", pageListHolder.getPageCount());
+		
+		return mav;
 	}
 	
 	@RequestMapping(value="/ordersubmit",method = RequestMethod.GET)
 	public String getOrdersForSubmit(ModelMap map) {
-		
+		 
 		 List<Order> listOfOrders = new ArrayList<>();
 		 List<Order> listOfOrdersFromBase = orderManager.getOrdersByUser(1, "user.id");
 		 cc:for (int i = 0; i < listOfOrdersFromBase.size(); i++) {

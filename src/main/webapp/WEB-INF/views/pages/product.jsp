@@ -16,12 +16,8 @@
 				<img class="img-responsive" src="/Webstore${product.pictureUri}" alt="${product.name}" width="500" height="500">
 			</div>
 			<div class="col-lg-6 product-information">
-				<div class="col-lg-6">
-				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-6 price-div">
 					<p class="price-product">Price: ${product.price}  $</p>
-				</div>
-				<div class="col-lg-6">
 				</div>
 				<div class="col-lg-6 stock-div">
 					<p>On stock: {{on_stock_value<0 ?  on_stock_value=on_stock : on_stock=on_stock_value}}</p>
@@ -29,20 +25,20 @@
 				<div class="col-lg-12 order-product">
 					<form role="form" ng-submit="addRowAsyncAsJSON()">
 						<input type="hidden" value="${product.id }" ng-model="id" id="productId">
-						<div class="col-lg-12">
+						<div class="col-lg-12 order-product-inner">
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="row">
 										<div class="col-lg-6">
 											<p>Quantity:</p>
 										</div>
-										<div class="col-lg-6">
+										<div class="col-lg-6 input-text">
 											
 											<input type="text" ng-model="quantity_cart" class="form-control" id="quantity">
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-6">
+								<div class="col-lg-6 add-to-cart-div">
 									<input type="submit" ng-click="on_stock_value = on_stock - quantity_cart" value="Add to cart" class="btn btn-primary"/>
 								</div>
 							</div>
@@ -120,13 +116,8 @@
 	</div>
 </div>
 <script>
-	$(document).ready(function() {
-	    // show the alert
-	    setTimeout(function() {
-	        $(".alert").alert('close');
-	    }, 2000);
-	});
-	
+		
+
 	function openCity(cityName, elmnt, color) {
 	    var i, tabcontent, tablinks;
 	    tabcontent = document.getElementsByClassName("tabcontent");

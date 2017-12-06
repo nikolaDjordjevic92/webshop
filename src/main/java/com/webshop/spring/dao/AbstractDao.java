@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -43,6 +45,12 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	    public void delete(T entity) {
 	        getSession().delete(entity);
 	       
+	    }
+	    
+	    @SuppressWarnings("unchecked")
+		public List<T> getQuery(String hql) {
+	    	Query query = getSession().createQuery(hql);
+	    	return query.getResultList();
 	    }
 	    
 		@SuppressWarnings("unchecked")

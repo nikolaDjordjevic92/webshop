@@ -21,7 +21,7 @@
 	      			<td>${item.product.name}</td>
 	      			<td>${item.product.price} $</td>
 	      			<td>${item.orderQuantity}</td>
-	      			<td><fmt:formatDate pattern="dd.MM.yyyy, hh:mm" value = "${item.orderDate}" /></td>
+	      			<td><fmt:formatDate pattern="dd.MM.yyyy, hh:mm" value = "${item.order.orderDate}" /></td>
 	      			<c:if test = "${item.orderStatus == 'IN_CART'}">
 		      			<td class="danger shipping-status">In cart</td>
 	      			</c:if>

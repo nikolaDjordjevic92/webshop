@@ -1,29 +1,39 @@
 package com.webshop.spring.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="orders")
-public class Order {
+public class Order implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
-	@ManyToOne
-	@JoinColumn(name = "product_id")
-	private Product product;
-	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -31,36 +41,18 @@ public class Order {
 	@Column(name="order_date")
 	private Date orderDate;
 	
-	@Column(name="order_quantity")
-	private Integer orderQuantity;
+//	@OneToMany(fetch = FetchType.LAZY)
+//	private List<OrderLine> orderLines = new ArrayList<>();
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name="order_status")
-	private OrderStatus orderStatus=OrderStatus.IN_CART;
+//	public List<OrderLine> getOrderLines() {
+//		return orderLines;
+//	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public Integer getOrderQuantity() {
-		return orderQuantity;
-	}
-	public void setOrderQuantity(Integer orderQuantity) {
-		this.orderQuantity = orderQuantity;
-	}
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
-	}
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
 	}
 	public Date getOrderDate() {
 		return orderDate;
@@ -68,11 +60,4 @@ public class Order {
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
-	}
-	
 }

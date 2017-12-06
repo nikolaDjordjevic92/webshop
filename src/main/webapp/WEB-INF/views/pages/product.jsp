@@ -2,7 +2,7 @@
 <%@ page isELIgnored="false" %>
 
 
-
+<input id="product_quantity" type="hidden" value="${product.quantity}"/>
 <div id="product" class="col-lg-12">
 	<div class="row">
 		<div class="col-lg-1">
@@ -19,9 +19,16 @@
 				<div class="col-lg-6 price-div">
 					<p class="price-product">Price: ${product.price}  $</p>
 				</div>
-				<div class="col-lg-6 stock-div">
-					<p>On stock: {{on_stock_value<0 ?  on_stock_value=on_stock : on_stock=on_stock_value}}</p>
-				</div>
+				<c:if test="${product.quantity >0 }">
+					<div class="col-lg-6 stock-div-instock">
+						<p>On stock: {{on_stock_value<0 ?  on_stock_value=on_stock : on_stock=on_stock_value}}</p>
+					</div>
+				</c:if>
+				<c:if test="${product.quantity < 1}">
+					<div class="col-lg-6 stock-div-outofstock">
+						<p>Out of stock</p>
+					</div>
+				</c:if>
 				<div class="col-lg-12 order-product">
 					<form role="form" ng-submit="addRowAsyncAsJSON()">
 						<input type="hidden" value="${product.id }" ng-model="id" id="productId">
@@ -39,7 +46,7 @@
 									</div>
 								</div>
 								<div class="col-lg-6 add-to-cart-div">
-									<input type="submit" ng-click="on_stock_value = on_stock - quantity_cart" value="Add to cart" class="btn btn-primary"/>
+									<input type="submit" ng-click="on_stock_value = on_stock - quantity_cart" value="Add to cart" class="btn btn-primary btn-add-to-cart"/>
 								</div>
 							</div>
 						</div>
@@ -115,67 +122,3 @@
 	<div class="col-lg-1">
 	</div>
 </div>
-<script>
-		
-
-	function openCity(cityName, elmnt, color) {
-	    var i, tabcontent, tablinks;
-	    tabcontent = document.getElementsByClassName("tabcontent");
-	    for (i = 0; i < tabcontent.length; i++) {
-	        tabcontent[i].style.display = "none";
-	    }
-	
-	    tablinks = document.getElementsByClassName("tablink");
-	    for (i = 0; i < tablinks.length; i++) {
-	        tablinks[i].style.backgroundColor = "";
-	    }
-	
-	    document.getElementById(cityName).style.display = "block";
-	
-	    elmnt.style.backgroundColor = color;
-	}
-	
-	// Get the element with id="defaultOpen" and click on it
-    $("#defaultOpen").click();
-	
-	function paintStars(id){
-		for (i = 1; i <= 5; i++) {
-			string = '#star-'+i;
-		    $(string).removeAttr('checked');
-		} 
-		var str = id.substring(5);
-		var string="";
-		for (i = 1; i <= str; i++) {
-			string = '#star-'+i;
-		    $(string).attr('checked','checked');
-		}
-		$('#star-rate').val(str);
-	}
-	
-	function paintStarsHover(id){
-		for (i = 1; i <= 5; i++) {
-			string = '#star-'+i;
-		    $(string).removeAttr('checked');
-		} 
-		var str = id.substring(5);
-		var string="";
-		for (i = 1; i <= str; i++) {
-			string = '#star-'+i;
-		    $(string).attr('checked','checked');
-		}
-	}
-	
-	function paintStarsOut(){
-		for (i = 0; i <= 5; i++) {
-			string = '#star-'+i;
-		    $(string).removeAttr('checked');
-		} 
-		var string="";
-		for (i = 1; i <= $('#star-rate').val(); i++) {
-			string = '#star-'+i;
-		    $(string).attr('checked','checked');
-		}
-	}
-	
-	
-</script>

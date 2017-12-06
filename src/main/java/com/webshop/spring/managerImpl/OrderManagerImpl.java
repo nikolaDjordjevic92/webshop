@@ -1,5 +1,6 @@
 package com.webshop.spring.managerImpl;
 
+
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -17,15 +18,18 @@ public class OrderManagerImpl implements OrderManager{
 
 	@Autowired
 	private OrderDao orderDao;
-	
+
 	@Override
-	public void saveOrder(Order order) {
-		orderDao.saveOrder(order);
+	public Order getNewOrder() {
+		List<Order> orders = orderDao.getNewOrder();
+		if(orders.size()>0)
+			return orderDao.getNewOrder().get(0);
+		else
+			return null;
 	}
 
 	@Override
-	public List<Order> getOrdersByUser(int id, String criteria) {
-		return orderDao.getOrdersForUser(id, criteria);
+	public void makeNewOrder(Order o) {
+		orderDao.makeNewOrder(o);
 	}
-
 }

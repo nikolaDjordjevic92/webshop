@@ -1,7 +1,6 @@
 package com.webshop.spring.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.webshop.spring.manager.OrderLineManager;
 import com.webshop.spring.manager.OrderManager;
 import com.webshop.spring.manager.ProductManager;
 import com.webshop.spring.model.Order;
+import com.webshop.spring.model.OrderLine;
 import com.webshop.spring.model.Product;
 import com.webshop.spring.model.User;
 
 @RestController
 public class RestOrderController {
 	
+	 @Autowired
+	 private OrderLineManager orderLineManager;
+	 
 	 @Autowired
 	 private OrderManager orderManager;
 	 
@@ -30,13 +34,24 @@ public class RestOrderController {
 	 
 	 @RequestMapping(value= {"/order"}, method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	 public ResponseEntity<Order> saveOrder(@RequestBody Product product) {
-		 Order order = new Order();
+		 OrderLine orderLine = new OrderLine();
 		 
 		 Product productFromBase = productManager.findById(product.getId());
 		 
 		 if(productFromBase.getQuantity() >= product.getQuantity() && product.getQuantity() > 0) {
-			 order.setProduct(product);
+			 orderLine.setProduct(product);
 			 
+			 Order order = orderManager.getNewOrder();
+			 if(order==null) {
+				 order = new Order();
+				 order.setOrderDate(null);
+				 User user = new User();
+				 user.setId(1);
+				 
+				 order.setUser(user);
+				 orderManager.makeNewOrder(order);
+				 order = orderManager.getNewOrder();
+			 }
 			 productFromBase.setQuantity(productFromBase.getQuantity()-product.getQuantity());
 			 productManager.update(productFromBase);
 			 
@@ -45,12 +60,11 @@ public class RestOrderController {
 			 
 			 order.setUser(user);
 			 
-			 Date date = new Date();
-			 order.setOrderDate(date);
+			 orderLine.setOrder(order);
 			 
-			 order.setOrderQuantity(product.getQuantity());
+			 orderLine.setOrderQuantity(product.getQuantity());
 			 
-			 orderManager.saveOrder(order);
+			 orderLineManager.saveOrderLine(orderLine);
 			 
 			 return new ResponseEntity<>(HttpStatus.OK);
 		 }
@@ -58,10 +72,13 @@ public class RestOrderController {
 			 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 	 }
 	 
-	 @RequestMapping(value="/order/{id}",method= RequestMethod.GET)
-	 public ResponseEntity<List<Order>> getOrdersForUser(){
-		 List<Order> listOfOrders = new ArrayList<>();
-		 List<Order> listOfOrdersFromBase = orderManager.getOrdersByUser(1, "user.id");
+	 @RequestMapping(value= {"/order/{id}"},method= RequestMethod.GET)
+	 public ResponseEntity<List<OrderLine>> getOrdersForUser(){
+		 List<OrderLine> listOfOrders = new ArrayList<>();
+		 Order order = orderManager.getNewOrder();
+		 if(order==null)
+			 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		 List<OrderLine> listOfOrdersFromBase = orderLineManager.getOrdersByUser(order.getId(), "order.id");
 		 cc:for (int i = 0; i < listOfOrdersFromBase.size(); i++) {
 			 if(listOfOrdersFromBase.get(i).getOrderStatus().toString().equals("IN_CART")) {
 				 for(int j = 0; j < listOfOrders.size(); j++) {
@@ -76,4 +93,10 @@ public class RestOrderController {
 		 }
 		 return new ResponseEntity<>(listOfOrders, HttpStatus.OK);
 	 }
+	 
+	@RequestMapping(value="/ordersubmit",method=RequestMethod.POST)
+	public void submitOrder() {
+//			orderManager.submitOrders(orders);
+		System.out.println("a");
+ 	}
 }

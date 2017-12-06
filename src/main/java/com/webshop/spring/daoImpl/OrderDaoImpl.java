@@ -8,14 +8,17 @@ import com.webshop.spring.dao.AbstractDao;
 import com.webshop.spring.dao.OrderDao;
 import com.webshop.spring.model.Order;
 
-@Repository("orderDao")
-public class OrderDaoImpl extends AbstractDao<Integer, Order> implements OrderDao{
 
-	public void saveOrder(Order order) {
-		super.persist(order);
+@Repository("orderDao")
+public class OrderDaoImpl extends AbstractDao<Integer, Order> implements OrderDao {
+	@Override
+	public List<Order> getNewOrder() {
+		System.out.println("a");
+		return (List<Order>)getQuery("FROM Order WHERE order_date=NULL");
 	}
 
-	public List<Order> getOrdersForUser(int id, String criteria) {
-		return getListById(id, criteria);
+	@Override
+	public void makeNewOrder(Order o) {
+		persist(o);
 	}
 }

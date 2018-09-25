@@ -25,7 +25,7 @@ public class CategoryController {
 	
 	@Autowired
 	ProductManager productManager;
-	
+	 
 	@RequestMapping(value="/categories", method = RequestMethod.GET)
 	public String getCategories(ModelMap map) {
 		

@@ -9,10 +9,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.webshop.spring.manager.ProductManager;
-import com.webshop.spring.manager.ReviewManager;
 import com.webshop.spring.model.Product;
 import com.webshop.spring.model.Review;
+import com.webshop.spring.service.ProductManager;
+import com.webshop.spring.service.ReviewManager;
 
 @Controller
 public class ProductController {
@@ -26,7 +26,7 @@ public class ProductController {
     @RequestMapping(value = "/product/{id}")
     public String getProducts(ModelMap model,@PathVariable Integer id) {
     	Product product = productManager.findById(id);
-    	List<Review> reviews = reviewManager.getReviews(id, "product.id");
+    	List<Review> reviews = reviewManager.getReviews(id);
         model.addAttribute("product", product);
         model.addAttribute("reviews",reviews);
         return "product";

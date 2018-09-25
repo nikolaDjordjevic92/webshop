@@ -16,8 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="orders")
+@JsonIgnoreProperties
 public class Order implements Serializable{
 	/**
 	 * 
@@ -41,12 +44,12 @@ public class Order implements Serializable{
 	@Column(name="order_date")
 	private Date orderDate;
 	
-//	@OneToMany(fetch = FetchType.LAZY)
-//	private List<OrderLine> orderLines = new ArrayList<>();
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<OrderLine> orderLines = new ArrayList<>();
 	
-//	public List<OrderLine> getOrderLines() {
-//		return orderLines;
-//	}
+	public List<OrderLine> getOrderLines() {
+		return orderLines;
+	}
 	
 	public User getUser() {
 		return user;

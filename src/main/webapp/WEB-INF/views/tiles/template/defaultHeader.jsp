@@ -16,7 +16,7 @@
 	        <span class="caret"></span></a>
 	        <ul class="dropdown-menu">
 		        <c:forEach items="${categories}" var="item">
-		          <li><a href="/Webstore/categories/${item.id}">${item.name}</a></li>
+		          <li><a href="/categories/${item.id}">${item.name}</a></li>
 				</c:forEach>
 	        </ul>
 	      </li>
@@ -57,7 +57,7 @@
 			      			<p>{{order.product.name}} - {{order.product.price}}$, quantity:{{order.orderQuantity}}</p>
 		      			</div>
 		      			<div class="col-lg-3 .vertical-center">
-			      			<img class="shopping-item-img" ng-src="/Webstore{{order.product.pictureUri}}">
+			      			<img class="shopping-item-img" ng-src="/{{order.product.pictureUri}}">
 		      			</div>
 	      			</div>
 	      		</li>

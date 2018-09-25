@@ -13,7 +13,6 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
  
 @SuppressWarnings("deprecation")
 @Configuration
-@EnableWebMvc
 @ComponentScan(basePackages = "com.webshop.spring")
 public class TilesConfiguration extends WebMvcConfigurerAdapter{
 	  @Bean

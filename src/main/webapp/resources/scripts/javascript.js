@@ -86,7 +86,23 @@ $(document).ready(function(){
 			$scope.orderSubmit = function() {
 			jQuery.ajax ({
 				url: $('#urlprefix').val()+'ordersubmit',
-				method: "POST", 
+				type: "POST",
+				dataType: 'json',
+				headers: {
+			    	'Content-Type' : 'application/json'
+			    },
+				data:JSON.stringify({
+					id: $order.order.id,
+					user : {
+						id:1,
+						firstName:$('#firstName').val(),
+						lastName:$('#lastName').val(),
+						city:$('#city').val(),
+						phoneNumber:$('#phoneNumber').val(),
+						homeAddress:$('#homeAddress').val(),
+						prefferdHourOfPickUp:$('#hour').val(),
+					}
+				}),
 				success:function(response){
 					console.log('bravo');
 				},

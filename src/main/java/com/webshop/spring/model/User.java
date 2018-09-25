@@ -35,6 +35,24 @@ public class User implements Serializable{
 	@Column(name="password")
 	private String password;
 	
+	@Column(name="first_name")
+	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
+	
+	@Column(name="city")
+	private String city;
+	
+	@Column(name="phone_number")
+	private String phoneNumber;
+	
+	@Column(name="home_address")
+	private String homeAddress;
+	
+	@Column(name="prefferd_hour_of_pick_up")
+	private Long prefferdHourOfPickUp;
+	
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_user_profile", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {
             @JoinColumn(name = "user_profile_id")})

@@ -13,7 +13,7 @@
 							<p>${item.name}</p><br>
 						</div>
 						<div class="col-lg-12">
-								<img src="/Webstore${item.pictureUri}" class="image" width="250" height="200">
+								<img src="/${item.pictureUri}" class="image" width="250" height="200">
 						</div>
 						<div class="col-lg-12 product-card-price">
 							<div class="row">
@@ -23,7 +23,7 @@
 									</b>
 								</div>
 								<div class="col-lg-6">
-									<a href="/Webstore/product/${item.id}">
+									<a href="/product/${item.id}">
 										<button type="button" class="btn btn-success details-product">
 												<span>Details</span>
 										</button>

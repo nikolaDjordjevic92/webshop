@@ -13,7 +13,7 @@
 				<h1>${product.name}</h1>
 			</div>
 			<div class="col-lg-6 product-image">
-				<img class="img-responsive" src="/Webstore${product.pictureUri}" alt="${product.name}" width="500" height="500">
+				<img class="img-responsive" src="/${product.pictureUri}" alt="${product.name}" width="500" height="500">
 			</div>
 			<div class="col-lg-6 product-information">
 				<div class="col-lg-6 price-div">

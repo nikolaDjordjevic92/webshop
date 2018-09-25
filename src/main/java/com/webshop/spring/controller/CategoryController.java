@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.webshop.spring.manager.CategoryManager;
-import com.webshop.spring.manager.ProductManager;
 import com.webshop.spring.model.Category;
 import com.webshop.spring.model.Product;
+import com.webshop.spring.service.CategoryService;
+import com.webshop.spring.service.ProductManager;
 
 @Controller
-
 public class CategoryController {
 
 	@Autowired
-	CategoryManager categoryManager;
+	CategoryService categoryManager;
 	
 	@Autowired
 	ProductManager productManager;
@@ -39,7 +38,7 @@ public class CategoryController {
 	@RequestMapping(value="/categories/{id}",method=RequestMethod.GET)
 	public ModelAndView getCategory(@PathVariable Integer id,@RequestParam(required=false) Integer page) {
 		ModelAndView mav = new ModelAndView("category");
-		List<Product> products=productManager.getProductByCategoryId(id,"category.id");
+		List<Product> products=productManager.getProductByCategoryId(id);
 		PagedListHolder<Product> pageListHolder = new PagedListHolder<>(products);
 		pageListHolder.setPageSize(9);
 		mav.addObject("maxPages", pageListHolder.getPageCount());

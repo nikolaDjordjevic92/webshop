@@ -12,19 +12,19 @@
 					<div class="col-lg-12 submit-order-fields">
 						<div class="row">
 							<label>First name:</label>
-							<input class="form-control"type="text" placeholder="first name" required>
+							<input id="firstName" class="form-control"type="text" placeholder="first name" required>
 						</div>
 					</div>
 					<div class="col-lg-12 submit-order-fields">
 						<div class="row">
 							<label>City:</label>
-							<input class="form-control"type="text" placeholder="city" required>
+							<input id="city" class="form-control"type="text" placeholder="city" required>
 						</div>
 					</div>
 					<div class="col-lg-12 submit-order-fields">
 						<div class="row">
 							<label>Home address:</label>
-							<input class="form-control"type="text" placeholder="home address" required>
+							<input id="homeAddress" class="form-control"type="text" placeholder="home address" required>
 						</div>
 					</div>
 				</div>
@@ -32,19 +32,19 @@
 					<div class="col-lg-12 submit-order-fields">
 						<div class="row">
 							<label>Last name:</label>
-							<input class="form-control"type="text" placeholder="last name" required>
+							<input id="lastName" class="form-control"type="text" placeholder="last name" required>
 						</div>
 					</div>
 					<div class="col-lg-12 submit-order-fields">
 						<div class="row">
 							<label>Phone number:</label>
-							<input class="form-control"type="text" placeholder="phone number" required>
+							<input id="phoneNumber" class="form-control"type="text" placeholder="phone number" required>
 						</div>
 					</div>
 					<div class="col-lg-12 submit-order-fields">
 						<div class="row">
 							<label>Preferred hour of pickup:</label>
-							<input class="form-control"type="text" placeholder="hour" required>
+							<input id="hour" class="form-control"type="text" placeholder="hour" required>
 						</div>
 					</div>
 				</div>

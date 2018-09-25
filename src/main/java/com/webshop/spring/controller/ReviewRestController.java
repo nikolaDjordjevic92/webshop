@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.webshop.spring.manager.ReviewManager;
 import com.webshop.spring.model.Review;
 import com.webshop.spring.model.User;
+import com.webshop.spring.service.ReviewManager;
 
 @RestController
 public class ReviewRestController {

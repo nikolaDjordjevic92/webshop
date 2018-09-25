@@ -1,4 +1,4 @@
-package com.webshop.spring;
+package java.com.webshop.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

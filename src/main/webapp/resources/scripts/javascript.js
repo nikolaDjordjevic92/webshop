@@ -95,12 +95,12 @@ $(document).ready(function(){
 					id: $order.order.id,
 					user : {
 						id:1,
-						firstName:$('#firstName').val(),
-						lastName:$('#lastName').val(),
-						city:$('#city').val(),
-						phoneNumber:$('#phoneNumber').val(),
-						homeAddress:$('#homeAddress').val(),
-						prefferdHourOfPickUp:$('#hour').val(),
+						firstName:$('#firstName').val();
+						lastName:$('#lastName').val();
+						city:$('#city').val();
+						phoneNumber:$('#phoneNumber').val();
+						homeAddress:$('#homeAddress').val();
+						prefferdHourOfPickUp:$('#hour').val();
 					}
 				}),
 				success:function(response){
